@@ -1,0 +1,15 @@
+{
+	"ImportPath": "github.com/baveltman/golang_docker_kubernetes/client_service",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v74",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Comment": "v1.1-24-g0b13a92",
+			"Rev": "0b13a922203ebdbfd236c818efcd5ed46097d690"
+		}
+	]
+}
