@@ -1,0 +1,12 @@
+version: '2'
+services:
+  client_service:
+    build: ./client_service
+    ports:
+    - "8080:8080"
+    links:
+    - api_service
+  api_service:
+    build: ./api_service
+    ports:
+    - "8001:8001"
