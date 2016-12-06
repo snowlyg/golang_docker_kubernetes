@@ -6,6 +6,8 @@ services:
     - "8080:8080"
     links:
     - api_service
+    environment:
+    - api
   api_service:
     build: ./api_service
     ports:
