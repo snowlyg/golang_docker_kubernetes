@@ -11,8 +11,12 @@ type Greeting struct {
 	Greeting	string	`json:"greeting"`
 }
 
+func GetNameQueryKey() string {
+	return "name"
+}
+
 func IndexHandler(w http.ResponseWriter, r *http.Request){
-	name := r.URL.Query().Get("name")
+	name := r.URL.Query().Get(GetNameQueryKey())
 
 	if name != "" {
 		apiServiceUri := os.Getenv("api")
