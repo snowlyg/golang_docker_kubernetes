@@ -42,5 +42,5 @@ func GetGreetingHandler(w http.ResponseWriter, r *http.Request){
 
 func ConstructGreeting(name string) (string) {
 
-	return "Hello " + name + " from Distelli!"
+	return "Hello " + name + " you are awesome!"
 }
