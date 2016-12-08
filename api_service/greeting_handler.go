@@ -10,17 +10,23 @@ type GreetingResponse struct {
 }
 
 func GetGreetingHandler(w http.ResponseWriter, r *http.Request){
+	response := GreetingResponse{}
+
 	name := r.URL.Query().Get("name")
+
 	if name == "" {
-		http.Error(w, "Missing required requet query parameter name", http.StatusBadRequest)
-		return
+		response = GreetingResponse{
+			Greeting: "Hello World from Distelli!",
+		}
+	} else {
+		greeting := ConstructGreeting(name)
+
+		response = GreetingResponse{
+			Greeting: greeting,
+		}
 	}
 
-	greeting := ConstructGreeting(name)
 
-	response := GreetingResponse{
-		Greeting: greeting,
-	}
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	json, err := json.Marshal(response)
