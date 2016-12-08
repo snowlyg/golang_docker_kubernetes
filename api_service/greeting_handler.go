@@ -10,23 +10,19 @@ type GreetingResponse struct {
 }
 
 func GetGreetingHandler(w http.ResponseWriter, r *http.Request){
-	response := GreetingResponse{}
-
 	name := r.URL.Query().Get("name")
 
-	if name == "" {
-		response = GreetingResponse{
-			Greeting: "Hello World from Distelli!",
-		}
-	} else {
-		greeting := ConstructGreeting(name)
+	var greeting string
 
-		response = GreetingResponse{
-			Greeting: greeting,
-		}
+	if name == "" {
+		greeting = ConstructGreeting("World")
+	} else {
+		greeting = ConstructGreeting(name)
 	}
 
-
+	response := GreetingResponse{
+		Greeting: greeting,
+	}
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	json, err := json.Marshal(response)
@@ -42,5 +38,5 @@ func GetGreetingHandler(w http.ResponseWriter, r *http.Request){
 
 func ConstructGreeting(name string) (string) {
 
-	return "Hello " + name + " you are awesome!"
+	return "Hello " + name + " from Distelli!"
 }
