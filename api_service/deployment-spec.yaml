@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: api-service3
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        run: api-service3
+    spec:
+      containers:
+        - name: api-service
+          image: gcr.io/distelli-alpha/api-service:v1
