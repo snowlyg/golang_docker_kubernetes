@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: api-service3
+  name: api-service
 spec:
   replicas: 3
   template:
     metadata:
       labels:
-        run: api-service3
+        run: api-service
     spec:
       containers:
         - name: api-service
