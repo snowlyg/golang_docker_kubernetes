@@ -1,29 +1,24 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
-	"os"
+	"net/http"
+	// "os"
 	"encoding/json"
 )
 
 type Greeting struct {
-	Greeting	string	`json:"greeting"`
+	Greeting string `json:"greeting"`
 }
 
 func GetNameQueryKey() string {
 	return "name"
 }
 
-func IndexHandler(w http.ResponseWriter, r *http.Request){
+func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get(GetNameQueryKey())
 
-
-	apiServiceUri := os.Getenv("api")
-	if apiServiceUri == "" {
-		http.Error(w, "Missing api service uri", http.StatusInternalServerError)
-		return
-	}
+	apiServiceUri := "http://api_service.com:8001"
 	response, _ := http.Get(apiServiceUri + "/api/greeting?name=" + name)
 	defer response.Body.Close()
 	greeting := &Greeting{}
