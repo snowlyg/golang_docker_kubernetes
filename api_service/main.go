@@ -12,5 +12,5 @@ func main() {
 
 	//listen and serve
 	log.Println("API Server listening on port " + PORT)
-	log.Fatal(http.ListenAndServe("http://api_service.com:"+PORT, router))
+	log.Fatal(http.ListenAndServe("api_service.com:"+PORT, router))
 }
