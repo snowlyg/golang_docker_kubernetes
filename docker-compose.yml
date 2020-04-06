@@ -1,18 +1,22 @@
 version: '2'
 services:
-  client_service:
-    build: ./client_service
-    expose:
-      - "80"
-    ports:
-      - "8080:80"
-    links:
-        - "api_service:api_service"
-    environment:
-      API: "http://api_service:80"
-  api_service:
+  golang_docker_kubernetes_api_service:
     build: ./api_service
+#    networks:
+#      - default
     expose:
-      - "80"
+    - "80"
     ports:
-      - "8001:80"
+    - "8001:80"
+  golang_docker_kubernetes_client_service:
+    build: ./client_service
+#    networks:
+#      - default
+    expose:
+    - "80"
+    ports:
+    - "8080:80"
+    links:
+    - "golang_docker_kubernetes_api_service:golang_docker_kubernetes_api_service"
+    environment:
+      API: "http://golang_docker_kubernetes_api_service:80"

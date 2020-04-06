@@ -20,7 +20,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 
 	apiServiceUri := os.Getenv("API")
 	if apiServiceUri == "" {
-		http.Error(w, "Missing api service uri", http.StatusInternalServerError)
+		http.Error(w, "Missing API service uri", http.StatusInternalServerError)
 		return
 	}
 
