@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-const PORT = "8001"
+const PORT = "80"
 
 func main() {
 	router := NewRouter()
